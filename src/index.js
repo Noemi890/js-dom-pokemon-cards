@@ -13,7 +13,7 @@ data.forEach(element => {
     card.append(imgEl)
     imgEl.setAttribute('class', 'card--img')
     h2El.innerText = element.name
-    imgEl.src = element.sprites.front_default
+    imgEl.src = element.sprites.other["official-artwork"].front_default
     imgEl.alt = 'Pokèmon'
     imgEl.style.width = '256px'
     element.stats.forEach(stat => {
