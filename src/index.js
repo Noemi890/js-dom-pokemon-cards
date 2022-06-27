@@ -8,33 +8,40 @@ data.forEach(element => {
     card.style.listStyle = 'none'
     card.setAttribute('class', 'card')
     cards.append(card)
+
     const h2El = document.createElement('h2')
     card.append(h2El)
     h2El.setAttribute('class', 'card--title')
+    const pokeName = `${element.name.substring(0, 1).toUpperCase()}${element.name.substring(1)}`
+    h2El.innerText = pokeName
+
     const imgEl = document.createElement('img')
     card.append(imgEl)
     imgEl.setAttribute('class', 'card--img')
-    h2El.innerText = element.name
     imgEl.src = element.sprites.other["official-artwork"].front_default
     imgEl.alt = 'Pokèmon'
+
     element.stats.forEach(stat => {
         const liEl = document.createElement('li')
         card.append(liEl)
         liEl.setAttribute('class', 'card--text')
-        liEl.innerText = `${stat.stat.name.toUpperCase()}: ${stat.base_stat}`
+        const statsName = `${stat.stat.name.toUpperCase()}: ${stat.base_stat}`
+        liEl.innerText = statsName
     })
+
     const pEl = document.createElement('p')
         pEl.setAttribute('class', 'card--text')
         card.append(pEl)
         pEl.style.display = 'block'
-        pEl.innerText = 'GAMES APPEREANCE:'
+        pEl.innerText = 'GAMES APPEARANCE:'
+
     element.game_indices.forEach(game => {
-        pEl.style.width = 'auto'
         const p2El = document.createElement('p')
         p2El.setAttribute('class', 'card--text')
         card.append(p2El)
         p2El.style.display = 'inline-block'
-        p2El.innerText = `${game.version.name}`
+        let gameName = `${game.version.name.substring(0, 1).toUpperCase()}${game.version.name.substring(1)}`
+        p2El.innerText = gameName
     })
 })
 
